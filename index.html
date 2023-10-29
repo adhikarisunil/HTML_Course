@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.7.0/dist/toastify.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+
 <style>
     .footer {
         background: #061D25;
@@ -69,9 +73,9 @@
                     I have worked as beginner front end developer using html and css. I am also learning Python and
                     Django in one
                     of the reputed institution of capital city of Nepal.
-                </p>   
-                <p>   
-                    Currently I am working as Python Developer at Flaresight, IT Company. 
+                </p>
+                <p>
+                    Currently I am working as Python Developer at Flaresight, IT Company.
                 </p>
             </div>
         </div>
@@ -146,20 +150,20 @@
             <div class="w3-padding-64 w3-padding-large">
                 <h1>Contact</h1>
                 <p class="w3-opacity"></p>
-                <form class="w3-container w3-card w3-padding-32 w3-white" action="/action_page.php" target="_blank">
+                <form id="myForm" class="w3-container w3-card w3-padding-32 w3-white" action="handleSubmit">
                     <div class="w3-section">
                         <label>Name</label>
-                        <input class="w3-input" style="width:100%;" type="text" required name="Name">
+                        <input id="from_name" class="w3-input" style="width:100%;" type="text" name="from_name">
                     </div>
                     <div class="w3-section">
                         <label>Email</label>
-                        <input class="w3-input" style="width:100%;" type="text" required name="Email">
+                        <input id="from_email" class="w3-input" style="width:100%;" type="text" name="from_email">
                     </div>
                     <div class="w3-section">
                         <label>Message</label>
-                        <input class="w3-input" style="width:100%;" type="text" required name="Message">
+                        <input id="message" class="w3-input" style="width:100%;" type="text" name="message">
                     </div>
-                    <button type="submit" class="w3-button w3-teal w3-right">Send</button>
+                    <button type="submit" id="sendEmailButton" class="w3-button w3-teal w3-right">Send</button>
                 </form>
             </div>
         </div>
@@ -174,6 +178,113 @@
         </div>
     </footer>
 
+    <!-- Show toast notifications -->
+    <div class="toast-container" id="toastContainer"></div>
+
+
+
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.7.0/dist/toastify.min.js"></script>
+    <script>
+
+
+        // Functions
+        function getToast(status) {
+            let text, background, color, isLoading, duration = 3000;
+
+            if (status === "true") {
+                text = "Email sent successfully!"
+                background = "linear-gradient(to right, #00b09b, #96c93d)"
+            } else {
+                if (status === "empty") {
+                    color = "black"
+                    text = "Invalid inputs. Fields cant be empty!"
+                    background = "linear-gradient(to right, #ffcc00, #ffcc99)"
+                } else {
+                    if (status === "isLoading") {
+                        duration = 1000
+                        isLoading = true;
+                        text = "Loading..."
+                        background = "linear-gradient(to right, #3498db, #9b59b6)"
+                    } else if (status === "isNotEmail") {
+                    color = "black"
+                        text = "Invalid input! Please enter a valid email."
+                        background = "linear-gradient(to right, #ffcc00, #ffcc99)"
+                    } else {
+                        text = "Some error occured."
+                        background = "linear-gradient(to right, #ff0000, #CD5C5C)"
+                    }
+                }
+            }
+
+            Toastify({
+                text,
+                duration,
+                isLoading: true,
+                // destination: "https://github.com/apvarun/toastify-js",
+                newWindow: true,
+                // close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "center", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                    // width:"full",
+                    padding: "15px 20px",
+                    background,
+                    color,
+                    fontWeight: "600",
+                    borderRadius: "0.2rem",
+                    border: "1px solid",
+                    outline: 0,
+                },
+                onClick: function () { } // Callback after click
+            }).showToast();
+        }
+
+
+        myForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            // Form inputs
+            const { from_name, from_email, message } = Object.fromEntries(formData);
+
+            // Mail variables
+            const recipient = "adhikarisunil339@gmail.com";
+            const subject = "Reaching out to Sunil from portfolio";
+
+            // Conditions
+            const isEmpty = !from_name || !message
+            const isNotEmail = !from_email.match(
+                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+
+            if (isEmpty) {
+                getToast("empty")
+            } else {
+                if (isNotEmail) {
+                    getToast("isNotEmail")
+                } else {
+                    getToast("isLoading")
+                    // Initialize Email.js with your User ID
+                    emailjs.init("MYAy-ZSMjAUpNWDcP");
+
+                    // Send the email
+                    emailjs.send("service_xqgydm6", "template_2c5blix", {
+                        from_name,
+                        to_name: `, Sunil Adhikari. You received a new email from ${from_email}`,
+                        message,
+                        // reply_to: "adhikarisunil339@gmail.com",
+                    }).then(function (response) {
+                        getToast("true")
+                    }, function (error) {
+                        getToast("false")
+                    });
+                }
+            }
+        })
+    </script>
 </body>
 
 </html>
