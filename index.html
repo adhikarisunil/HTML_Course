@@ -5,12 +5,105 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" /> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js@1.7.0/dist/toastify.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
 
 <style>
+    body {
+        min-width: 100%;
+        max-width: 1800px;
+        font-size: 22px;
+    }
+
+    /* Texts */
+    .sunil-text {
+        background: 50% 100% / 50% 50% no-repeat radial-gradient(ellipse at bottom, #fff, transparent, transparent);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: 64px;
+        font-family: "Source Sans Pro", sans-serif;
+        animation: reveal 7s ease-in-out infinite 500ms, glow 2500ms linear infinite 2000ms;
+    }
+
+    @keyframes reveal {
+        60% {
+            letter-spacing: 8px;
+        }
+
+        80% {
+            background-size: 300% 300%;
+        }
+    }
+
+    @keyframes glow {
+        40% {
+            text-shadow: 0 0 8px #fff;
+        }
+    }
+
+
+    /* Hover Start */
+    .hover-title {
+        background: linear-gradient(#fff 0 0) no-repeat calc(200% - var(--p, 0%)) 100% / 200% var(--p, 0.08em);
+        transition: 0.3s var(--t, 0s),
+            background-position 0.3s calc(0.3s - var(--t, 0s));
+    }
+
+    .hover-title:hover {
+        --p: 100%;
+        --t: 0.3s;
+        color: #fff;
+    }
+
+    /* Hover End */
+
+
+    /* Backgrounds Start */
+    .about-bg {
+        background-image: linear-gradient(to top, #d299c2 0%, #fef9d7 100%);
+
+    }
+
+    .achievement-bg {
+
+        background-image: linear-gradient(-225deg, #69EACB 0%, #EACCF8 48%, #6654F1 100%);
+    }
+
+    .contact-bg {
+        background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    }
+
+    .portfolio-bg {
+        background-color: #FBDA61;
+        background-image: linear-gradient(45deg, #FBDA61 0%, #FF5ACD 100%);
+
+    }
+
+    .resume-bg {
+        background-color: #D9AFD9;
+        background-image: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%);
+
+    }
+
+    .notes-bg {
+        background-color: #85FFBD;
+        background-image: linear-gradient(45deg, #85FFBD 0%, #FFFB7D 100%);
+
+    }
+
+    /* Extra Bgs */
+    .light-bg {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 2rem;
+        padding: 20px 50px;
+    }
+
+    /* Backgrounds End */
+
     .footer {
         background: #061D25;
         padding: 10px 0;
@@ -37,96 +130,96 @@
 
     <!-- First Grid: Logo & About -->
     <div class="w3-row">
-        <div class="w3-half w3-pink w3-container w3-center" style="height:700px">
-            <div class="w3-padding-64">
-                <h1 style="color: aquagreen;">Sunil Adhikari</h1>
-                <div class="w3-padding-64">
-                    <a href="#work" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">About Me</a>
-                    <a href="#work" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">Achievements</a>
-                    <a href="#work" class="w3-button w3-black w3-block w3-hover-teal w3-padding-16">Education</a>
-                    <a href="#work" class="w3-button w3-black w3-block w3-hover-dark-grey w3-padding-16">Notes</a>
-                    <a href="#contact" class="w3-button w3-black w3-block w3-hover-brown w3-padding-16">Contact</a>
-                </div>
-            </div>
+        <div class="w3-half vh-100 portfolio-bg d-flex flex-column justify-content-center align-items-center" id="sunil">
+            <div class="sunil-text">Sunil Adhikari</div>
+                <a href="#about" class="w3-button w3-block hover-title w3-padding-16">About Me</a>
+            <a href="#achievements" class="w3-button w3-block hover-title w3-padding-16">Achievements</a>
+            <a href="#resume" class="w3-button w3-block hover-title w3-padding-16">Education</a>
+            <a href="#notes" class="w3-button w3-block hover-title w3-padding-16">Notes</a>
+            <a href="#contact" class="w3-button w3-block hover-title w3-padding-16">Contact</a>
         </div>
-        <div class="w3-half w3-green w3-container w3-center" style="height:700px">
-            <div class="w3-padding-64 w3-center">
-                <h1>About Me</h1>
-                <img src="Image/image4.jpg" class="w3-margin w3-circle" alt="Person" style="width:50%">
-                <div class="w3-left-align w3-padding-large">
-                    <p class="text-justify">I am a student of computer science who passed bachelor's degree in 2077. I am a deep knowledge
-                        miner in the
-                        concerned subject. I am keen and enthusiast to learn technology. I have been in the field since
-                        10 years.I
-                        am also learning Python and Django in IT Training, Kathmandu, Nepal.</p>
-                </div>
+
+        <div class="w3-half vh-100 about-bg d-flex flex-column justify-content-center align-items-center" id="about">
+            <h1>About Me</h1>
+            <img src="Image/image4.jpg" class="w3-margin w3-circle" alt="Person" style="width:50%">
+            <div class="w3-left-align w3-padding-large">
+                <p class="text-justify">I am a student of computer science who passed bachelor's degree in 2077.
+                    I
+                    am a deep knowledge
+                    miner in the
+                    concerned subject. I am keen and enthusiast to learn technology. I have been in the field
+                    since
+                    10 years.I
+                    am also learning Python and Django in IT Training, Kathmandu, Nepal.</p>
             </div>
         </div>
     </div>
 
     <!-- Second Grid: Work & Resume -->
     <div class="w3-row">
-        <div class="w3-half w3-purple w3-center" style="min-height:800px" id="work">
-            <div class="w3-left-align w3-padding-large">
-                <h1>Achievements</h1>
-                <p class="text-justify">I have one year experience of teaching basic level in the reputed institution of the country.
+        <div class="w3-half vh-100 achievement-bg d-flex flex-column justify-content-center align-items-center" id="achievements">
+            <div class="w3-padding-large">
+                <h1 class="text-center">Achievements</h1>
+                <p class="text-justify">I have one year experience of teaching basic level in the reputed
+                    institution of
+                    the country.
                     I have worked as beginner front end developer using html and css. I am also learning Python and
                     Django in one
                     of the reputed institution of capital city of Nepal.
                 </p>
                 <p class="text-justify">
-                    Currently I am working as Python Developer at Flaresight, IT Company. My role is backend developer here. I make APIs in Django Rest Framework.
+                    Currently I am working as Python Developer at Flaresight, IT Company. My role is backend
+                    developer
+                    here. I make APIs in Django Rest Framework.
                 </p>
             </div>
         </div>
-        <div class="w3-half w3-red w3-container" style="min-height:800px">
-            <div class="w3-padding-64 w3-center">
-                <h2>My Resume</h2>
-                <div class="w3-container w3-responsive">
-                    <table class="w3-table">
-                        <tr class="w3-white">
-                            <th>Year</th>
-                            <th>Qualification</th>
-                            <th>Institution</th>
-                        </tr>
-                        <tr class="w3-white">
-                            <td>2015-2019</td>
-                            <td>BSC. CSIT</td>
-                            <td>Nepalaya College, Kathmandu</td>
-                        </tr>
-                        <tr class="w3-white">
-                            <td>2012-2015</td>
-                            <td>Diploma in Networking</td>
-                            <td>VIT, Melbourne</td>
-                        </tr>
-                        <tr class="w3-white">
-                            <td>2009-2012</td>
-                            <td>Diploma in Horticulture</td>
-                            <td>HSA, Melbourne</td>
-                        </tr>
-                        <tr class="w3-white">
-                            <td>2006-2008</td>
-                            <td>12 in Biological science</td>
-                            <td>CCRC, Kathmandu</td>
-                        </tr>
-                        <tr class="w3-white">
-                            <td>2002-2005</td>
-                            <td>High School</td>
-                            <td>CESBS, Chitwan</td>
-                        </tr>
+        <div class="w3-half vh-100 resume-bg d-flex flex-column justify-content-center align-items-center" id="resume">
+            <h2>My Resume</h2>
+            <div class="w3-container w3-responsive light-bg">
+                <table class="w3-table">
+                    <tr>
+                        <th>Year</th>
+                        <th>Qualification</th>
+                        <th>Institution</th>
+                    </tr>
+                    <tr>
+                        <td>2015-2019</td>
+                        <td>BSC. CSIT</td>
+                        <td>Nepalaya College, Kathmandu</td>
+                    </tr>
+                    <tr>
+                        <td>2012-2015</td>
+                        <td>Diploma in Networking</td>
+                        <td>VIT, Melbourne</td>
+                    </tr>
+                    <tr>
+                        <td>2009-2012</td>
+                        <td>Diploma in Horticulture</td>
+                        <td>HSA, Melbourne</td>
+                    </tr>
+                    <tr>
+                        <td>2006-2008</td>
+                        <td>12 in Biological science</td>
+                        <td>CCRC, Kathmandu</td>
+                    </tr>
+                    <tr>
+                        <td>2002-2005</td>
+                        <td>High School</td>
+                        <td>CESBS, Chitwan</td>
+                    </tr>
 
-                    </table>
-                </div>
+                </table>
             </div>
         </div>
     </div>
 
     <!-- Third Grid: Notes -->
-    <div class="w3-row" id="Notes">
-        <div class="w3-half w3-orange w3-container w3-center" style="height:700px">
-            <div>
-                <h1>Notes</h1>
-                <ol>
+    <div class="w3-row d-flex justify-content-center notes-bg">
+        <div class="w3-half vh-100 d-flex flex-column justify-content-center align-items-center" id="notes">
+            <div class="">
+                <h1 class="w-full text-center">Notes</h1>
+                <ol class="">
                     <li>Computer- Class 3</li>
                     <li>Computer- Class 4</li>
                     <li>Computer- Class 5</li>
@@ -146,28 +239,26 @@
                 </ol>
             </div>
         </div>
-        <div class="w3-half w3-pink w3-container" style="height:700px">
-            <div class="w3-padding-64 w3-padding-large">
-                <h1>Contact</h1>
-                <p class="w3-opacity"></p>
-                <form id="myForm" class="w3-container w3-card w3-padding-32 w3-white" action="handleSubmit">
-                    <div class="w3-section">
-                        <label>Name</label>
-                        <input id="from_name" class="w3-input" style="width:100%;" type="text" name="from_name">
-                    </div>
-                    <div class="w3-section">
-                        <label>Email</label>
-                        <input id="from_email" class="w3-input" style="width:100%;" type="text" name="from_email">
-                    </div>
-                    <div class="w3-section">
-                        <label>Message</label>
-                        <input id="message" class="w3-input" style="width:100%;" type="text" name="message">
-                    </div>
-                    <button type="submit" id="sendEmailButton" class="w3-button w3-teal w3-right">Send</button>
-                </form>
-            </div>
+        <div class="w3-half vh-100 contact-bg d-flex flex-column justify-content-center align-items-center" id="contact">
+            <h1>Contact</h1>
+            <form id="myForm" class="w3-container w3-padding-32 light-bg" action="handleSubmit">
+                <div class="w3-section">
+                    <label>Name</label>
+                    <input id="from_name" class="w3-input" type="text" name="from_name">
+                </div>
+                <div class="w3-section">
+                    <label>Email</label>
+                    <input id="from_email" class="w3-input" type="text" name="from_email">
+                </div>
+                <div class="w3-section">
+                    <label>Message</label>
+                    <input id="message" class="w3-input" type="text" name="message">
+                </div>
+                <button type="submit" id="sendEmailButton" class="w3-button w3-teal w3-right">Send</button>
+            </form>
         </div>
     </div>
+
     <footer class="footer">
         <div class="container text-center">
             <a href="https://www.facebook.com/suniladhikari42"><i class="fa fa-facebook"></i></a>
@@ -184,6 +275,7 @@
 
 
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js@1.7.0/dist/toastify.min.js"></script>
     <script>
@@ -208,7 +300,7 @@
                         text = "Loading..."
                         background = "linear-gradient(to right, #3498db, #9b59b6)"
                     } else if (status === "isNotEmail") {
-                    color = "black"
+                        color = "black"
                         text = "Invalid input! Please enter a valid email."
                         background = "linear-gradient(to right, #ffcc00, #ffcc99)"
                     } else {
